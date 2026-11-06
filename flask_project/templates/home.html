@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ title_page }}{% endblock %}
+
+{% block content %}
+    <h1>{{ title_page|upper }}</h1>
+    <p>У каталозі доступно елементів: <strong>{{ items_count }}</strong> (Обчислено в Jinja2: {{ items_count * 2 }})</p>
+
+    <h2>Рекомендовані книги:</h2>
+    {% if featured_books %}
+        <ul>
+        {% for book in featured_books %}
+            <li>
+                <strong>{{ book.title }}</strong> — {{ book.author }} ({{ book.year }} р.)
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>Книг поки немає.</p>
+    {% endif %}
+{% endblock %}
